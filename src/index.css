@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 15 33% 96%;
+    --foreground: 0 0% 7%;
+
+    --card: 15 33% 96%;
+    --card-foreground: 0 0% 7%;
+
+    --popover: 15 33% 96%;
+    --popover-foreground: 0 0% 7%;
+
+    --primary: 355 30% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 15 33% 92%;
+    --secondary-foreground: 0 0% 7%;
+
+    --muted: 15 20% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 355 30% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 15 20% 88%;
+    --input: 15 20% 88%;
+    --ring: 355 30% 60%;
+
+    --radius: 0.75rem;
+
+    --rose-gold: 355 30% 60%;
+    --rose-gold-light: 355 40% 75%;
+    --nude: 15 33% 94%;
+    --ivory: 40 33% 97%;
+    --blush: 350 40% 90%;
+    --charcoal: 0 0% 7%;
+    --gold: 40 60% 50%;
+    --gold-light: 40 50% 70%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-ivory/60 backdrop-blur-xl border border-border/50;
+    box-shadow: 0 8px 32px hsl(var(--rose-gold) / 0.08);
+  }
+
+  .glass-dark {
+    background: hsla(0, 0%, 7%, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsla(40, 60%, 50%, 0.15);
+  }
+
+  .gradient-rose {
+    background: linear-gradient(135deg, hsl(var(--rose-gold)), hsl(var(--rose-gold-light)));
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
+  }
+
+  .gradient-hero-overlay {
+    background: linear-gradient(
+      135deg,
+      hsla(0, 0%, 0%, 0.7) 0%,
+      hsla(355, 30%, 30%, 0.4) 50%,
+      hsla(40, 60%, 30%, 0.3) 100%
+    );
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--rose-gold-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shadow-rose {
+    box-shadow: 0 10px 40px -10px hsl(var(--rose-gold) / 0.3);
+  }
+
+  .shadow-gold {
+    box-shadow: 0 10px 40px -10px hsl(var(--gold) / 0.3);
+  }
+
+  .glow-hover {
+    @apply transition-all duration-500;
+  }
+
+  .glow-hover:hover {
+    box-shadow: 0 0 30px hsl(var(--rose-gold) / 0.3), 0 10px 40px -10px hsl(var(--rose-gold) / 0.2);
+    transform: translateY(-4px);
+  }
+
+  .card-lift {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  .card-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px -15px hsl(var(--rose-gold) / 0.25);
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      hsla(40, 60%, 80%, 0.15) 50%,
+      transparent 70%
+    );
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 px-4 md:px-8;
+  }
+
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    z-index: 100;
+    background: linear-gradient(90deg, hsl(var(--rose-gold)), hsl(var(--gold)));
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'Poppins', sans-serif;
+  }
+}
